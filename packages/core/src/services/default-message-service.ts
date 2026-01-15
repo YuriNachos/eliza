@@ -1472,8 +1472,8 @@ export class DefaultMessageService implements IMessageService {
           : [];
         const result =
           actionResults.length > 0 &&
-          typeof actionResults[0] === 'object' &&
-          actionResults[0] !== null
+            typeof actionResults[0] === 'object' &&
+            actionResults[0] !== null
             ? actionResults[0]
             : null;
         const success =
@@ -1489,9 +1489,9 @@ export class DefaultMessageService implements IMessageService {
           text: actionResultText,
           values:
             result &&
-            'values' in result &&
-            typeof result.values === 'object' &&
-            result.values !== null
+              'values' in result &&
+              typeof result.values === 'object' &&
+              result.values !== null
               ? result.values
               : undefined,
           error: success ? undefined : actionResultText,
@@ -1584,15 +1584,15 @@ export class DefaultMessageService implements IMessageService {
 
     const responseMessages: Memory[] = responseContent
       ? [
-          {
-            id: responseId,
-            entityId: runtime.agentId,
-            agentId: runtime.agentId,
-            content: responseContent,
-            roomId: message.roomId,
-            createdAt: Date.now(),
-          },
-        ]
+        {
+          id: responseId,
+          entityId: runtime.agentId,
+          agentId: runtime.agentId,
+          content: responseContent,
+          roomId: message.roomId,
+          createdAt: Date.now(),
+        },
+      ]
       : [];
 
     runtime.logger.info(
