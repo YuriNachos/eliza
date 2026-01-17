@@ -157,10 +157,11 @@ export async function copyTemplate(
     }
 
     // Set @elizaos dependencies to 'latest' for npm installability
+    // Only converts workspace:* references to preserve intentionally pinned versions
     // For local development testing, use `elizaos create --local` which links packages after creation
     const normalizeElizaDeps = (deps: Record<string, string>, isDevDeps = false): void => {
       for (const depName of Object.keys(deps)) {
-        if (depName.startsWith('@elizaos/') && deps[depName] !== 'latest') {
+        if (depName.startsWith('@elizaos/') && deps[depName] === 'workspace:*') {
           if (!isQuietMode()) {
             logger.info(
               { src: 'cli', util: 'copy-template', depName, version: 'latest' },
